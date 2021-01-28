@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil | The best movies ever{% endblock %}
+
+{% block body %}
+<h1>The best movies ever</h1>
+    <div class="album py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                {% for movie in movies %}
+                    <div class="col-md-4">
+                        <div class="card mb-4 box-shadow">
+                            <img class="card-img-top" src="{{ movie.illustration }}" alt="Card image cap">
+                            <div class="card-body text-center">
+                                <h2>{{ movie.name }}</h2>
+                                <span class="badge badge-pill badge-secondary">{{ movie.type }}</span>
+                                <div class="d-flex justify-content-center align-items-center mt-3">
+                                    <div class="btn-group">
+                                        <a href="{{ path('movie', {id: movie.id}) }}" type="button" class="btn btn-sm btn-outline-primary">En savoir plus</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

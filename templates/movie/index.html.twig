@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ movie.name }} | The best movies ever{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row mb-2 justify-content-center">
+            <div class="col-md-10 col-12">
+                <div class="card flex-md-row mb-4 box-shadow h-md-250">
+                    <div class="card-body d-flex flex-column align-items-start">
+                        <strong class="d-inline-block mb-2 text-primary">{{ movie.type }}</strong>
+                        <h3 class="mb-0">
+                            {{ movie.name }}
+                        </h3>
+                        <p class="card-text mb-auto">{{ movie.director }}</p>
+                        <div class="mb-1 text-muted">{{ movie.duration }}</div>
+                    </div>
+                    <img class="card-img-right img-fluid" src="{{ movie.illustration }}" width="200" height="250" alt="Card image cap">
+                </div>
+            </div>
+        </div>
+        <div>
+            {% form_theme form 'bootstrap_4_layout.html.twig' %}
+            {{ form(form) }}
+        </div>
+        <div>
+            {% for comment in comments %}
+                <div>{{ comment.author }}</div>
+                <div>Le {{ comment.createdAt|date("d/m/Y à H:i", "Europe/Paris") }}</div>
+                <div>{{ comment.message }}</div>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}
