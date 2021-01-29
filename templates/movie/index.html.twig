@@ -15,7 +15,7 @@
                         <p class="card-text">{{ movie.director }}</p>
                         <div class="mb-1 text-muted">{{ movie.duration }}</div>
                         <div class="mt-3 d-flex">
-                            <div class="mr-3 fb-share-button" data-href="{{ app.request.uri }}" data-layout="button" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{ app.request.uri }}F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Partager</a></div>
+                            <div class="mr-3 fb-share-button" data-href="{{ app.request.uri }}" data-layout="button" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=" . urlencode({{ app.request.uri }})"F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Partager</a></div>
                             <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-show-count="false">Tweet</a>
                         </div>
                     </div>
