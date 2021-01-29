@@ -21,11 +21,11 @@ class CommentType extends AbstractType
             ->add('notation', ChoiceType::class, [
                 'label' => 'Note',
                 'choices' => [
-                    '1' => '1',
-                    '2' => '2',
-                    '3' => '3',
+                    '5' => '5',
                     '4' => '4',
-                    '5' => '5'
+                    '3' => '3',
+                    '2' => '2',
+                    '1' => '1'
                 ],
                 'expanded' => true,
                 'required' => true
@@ -34,7 +34,8 @@ class CommentType extends AbstractType
                 'label' => 'Votre nom',
                 'attr' => [
                     'placeholder' => 'Entrez votre nom',
-                    'autocomplete' => 'off'
+                    'autocomplete' => 'off',
+                    'class' => 'form-control'
                 ],
                 'constraints' => [
                     new NotBlank(),
@@ -49,6 +50,7 @@ class CommentType extends AbstractType
                 'attr' => [
                     'placeholder' => 'Entrez votre commentaire',
                     'autocomplete' => 'off',
+                    'class' => 'form-control',
                     'rows' => '5'
                 ],
                 'constraints' => [
@@ -60,7 +62,10 @@ class CommentType extends AbstractType
                 ]
             ])
             ->add('submit', SubmitType::class, [
-                'label' => 'Valider'
+                'label' => 'Valider',
+                'attr' => [
+                    'class' => 'btn btn-primary',
+                ]
             ])
         ;
     }

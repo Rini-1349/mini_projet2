@@ -1,3 +1,44 @@
+@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
 .avg-star {
     filter: invert(92%) sepia(56%) saturate(1175%) hue-rotate(342deg) brightness(103%) contrast(92%);
 }
+
+
+/* Remove radio buttons */
+
+.starrating>div>div>input {
+    display: none;
+}
+
+.starrating>div>div {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.starrating>div>div {
+    color: #fff;
+}
+
+.starrating>div>div>label:before {
+    content: "\f005";
+    /* Star */
+    margin: 2px;
+    font-size: 20px;
+    font-family: FontAwesome;
+    display: inline-block;
+    color: #222222;
+}
+
+.starrating>div>div>input:checked~label:before {
+    color: #ffca08;
+}
+
+
+/* Set yellow color when star checked */
+
+.starrating>div>div>input:hover~label:before {
+    color: #ffca08;
+}
+
+
+/* Set yellow color when star hover */

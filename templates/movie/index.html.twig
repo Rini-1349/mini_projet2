@@ -69,8 +69,18 @@
             </div>
         </div>
         <div class="col-md-10 col-12 m-auto">
-            {% form_theme form 'bootstrap_4_layout.html.twig' %}
-            {{ form(form) }}
+            {{ form_start(form) }}
+            <div class="starrating d-flex">
+                {{ form_row(form.notation) }}
+            </div>
+            <div class="form-group">
+                {{ form_row(form.author) }}
+            </div>
+            <div class="form-group">
+                {{ form_row(form.message) }}
+            </div>
+                {{ form_row(form.submit) }}
+            {{ form_end(form) }}
         </div>
         <div class="col-md-10 col-12 m-auto">
             {% for comment in movie.comments %}
