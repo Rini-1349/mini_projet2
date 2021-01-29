@@ -12,8 +12,12 @@
                         <h3 class="mb-0">
                             {{ movie.name }}
                         </h3>
-                        <p class="card-text mb-auto">{{ movie.director }}</p>
+                        <p class="card-text">{{ movie.director }}</p>
                         <div class="mb-1 text-muted">{{ movie.duration }}</div>
+                        <div class="mt-3 d-flex">
+                            <div class="mr-3 fb-share-button" data-href="https://symfony.com/doc/current/frontend/encore/bootstrap.html" data-layout="button" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{ app.request.uri }}F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Partager</a></div>
+                            <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-show-count="false">Tweet</a>
+                        </div>
                     </div>
                     <img class="card-img-right img-fluid" src="{{ movie.illustration }}" width="200" height="250" alt="Card image cap">
                 </div>
@@ -31,5 +35,4 @@
             {% endfor %}
         </div>
     </div>
-
 {% endblock %}
