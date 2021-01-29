@@ -6,6 +6,7 @@ use App\Repository\MovieRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\OrderBy;
 
 /**
  * @ORM\Entity(repositoryClass=MovieRepository::class)
@@ -46,6 +47,7 @@ class Movie
 
     /**
      * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="movie", orphanRemoval=true)
+     * @OrderBy({"created_at" = "DESC"})
      */
     private $comments;
 

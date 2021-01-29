@@ -28,7 +28,6 @@ class MovieController extends AbstractController
 
         $comment = new Comment();
         $form = $this->createForm(CommentType::class, $comment);
-
         $form->handleRequest($request);
 
         if ($form->isSubmitted() AND $form->isValid()){
@@ -43,11 +42,8 @@ class MovieController extends AbstractController
             );
         }
 
-        $comments = $this->entityManager->getRepository(Comment::class)->findByMovie($movie);
-
         return $this->render('movie/index.html.twig', [
             'movie' => $movie,
-            'comments' => $comments,
             'form' => $form->createView()
         ]);
     }

@@ -24,7 +24,7 @@
             {{ form(form) }}
         </div>
         <div>
-            {% for comment in comments %}
+            {% for comment in movie.comments %}
                 <div>{{ comment.author }}</div>
                 <div>Le {{ comment.createdAt|date("d/m/Y à H:i", "Europe/Paris") }}</div>
                 <div>{{ comment.message }}</div>
