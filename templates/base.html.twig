@@ -21,7 +21,9 @@
     </head>
     <body>
         <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-5">
-            <a class="pl-5 navbar-brand" href="{{ path('home') }}">BestMovies</a>
+            <div class="container">
+                <a class="navbar-brand" href="{{ path('home') }}">BestMovies</a>
+            </div>
         </nav>
         {# Ajoute des messages flash s'il y en a #}
         {% for label, messages in app.flashes %}
@@ -32,17 +34,15 @@
             {% endfor %}
         {% endfor %}
 
+        <div id="fb-root"></div>
         {% block body %}{% endblock %}
-        <footer class="text-muted">
+        <!-- FOOTER -->
+        <footer class="bg-dark w-100 py-5 mt-5">
             <div class="container">
-                <p class="float-right">
-                    <a href="#">Back to top</a>
-                </p>
-                <p>Album example is &copy; Bootstrap, but please download and customize it for yourself!</p>
-                <p>New to Bootstrap? <a href="../../">Visit the homepage</a> or read our <a href="../../getting-started/">getting started guide</a>.</p>
+                <p class="float-right text-white"><a href="#">Back to top</a></p>
+                <p class="text-white">&copy; 2020 BestMovies</p>
             </div>
         </footer>
-        <div id="fb-root"></div>
         {% block javascripts %}{% endblock %}
     </body>
 </html>
