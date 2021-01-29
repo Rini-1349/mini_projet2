@@ -45,7 +45,7 @@ class Movie
     private $illustration;
 
     /**
-     * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="movie_id", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="movie", orphanRemoval=true)
      */
     private $comments;
 
@@ -131,7 +131,7 @@ class Movie
     {
         if (!$this->comments->contains($comment)) {
             $this->comments[] = $comment;
-            $comment->setMovieId($this);
+            $comment->setMovie($this);
         }
 
         return $this;
@@ -141,8 +141,8 @@ class Movie
     {
         if ($this->comments->removeElement($comment)) {
             // set the owning side to null (unless already changed)
-            if ($comment->getMovieId() === $this) {
-                $comment->setMovieId(null);
+            if ($comment->getMovie() === $this) {
+                $comment->setMovie(null);
             }
         }
 

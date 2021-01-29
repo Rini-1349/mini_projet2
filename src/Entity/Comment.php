@@ -33,9 +33,10 @@ class Comment
     private $message;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\ManyToOne(targetEntity=Movie::class, inversedBy="comments")
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $movie_id;
+    private $movie;
 
     public function getId(): ?int
     {
@@ -78,14 +79,14 @@ class Comment
         return $this;
     }
 
-    public function getMovieId(): ?int
+    public function getMovie(): ?Movie
     {
-        return $this->movie_id;
+        return $this->movie;
     }
 
-    public function setMovieId(?int $movie_id): self
+    public function setMovie(?Movie $movie): self
     {
-        $this->movie_id = $movie_id;
+        $this->movie = $movie;
 
         return $this;
     }

@@ -33,7 +33,7 @@ class MovieController extends AbstractController
 
         if ($form->isSubmitted() AND $form->isValid()){
             $comment = $form->getData();
-            $comment->setMovieId($id);
+            $comment->setMovie($movie);
             $comment->setCreatedAt(new \DateTime("now"));
 
             $this->entityManager->persist($comment);
@@ -45,8 +45,7 @@ class MovieController extends AbstractController
             return $this->redirectToRoute('movie', ['id' => $id]);
         }
 
-        $comments = $this->entityManager->getRepository(Comment::class)->findBy(['movie_id' => $id]);
-
+        $comments = $this->entityManager->getRepository(Comment::class)->findByMovie($movie);
 
         return $this->render('movie/index.html.twig', [
             'movie' => $movie,
