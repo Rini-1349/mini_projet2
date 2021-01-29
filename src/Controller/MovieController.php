@@ -34,7 +34,6 @@ class MovieController extends AbstractController
         if ($form->isSubmitted() AND $form->isValid()){
             $comment = $form->getData();
             $comment->setMovie($movie);
-            $comment->setCreatedAt(new \DateTime("now"));
 
             $this->entityManager->persist($comment);
             $this->entityManager->flush();
@@ -42,7 +41,6 @@ class MovieController extends AbstractController
                 'success',
                 'Votre commentaire a été enregistré !'
             );
-            return $this->redirectToRoute('movie', ['id' => $id]);
         }
 
         $comments = $this->entityManager->getRepository(Comment::class)->findByMovie($movie);

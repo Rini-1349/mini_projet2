@@ -38,6 +38,13 @@ class Comment
      */
     private $movie;
 
+    public function __construct()
+    {
+        if (is_null($this->created_at)) {
+            $this->created_at = new \DateTime("now");
+        }
+    }
+
     public function getId(): ?int
     {
         return $this->id;
