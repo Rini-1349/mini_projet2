@@ -1,6 +1,9 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}{{ movie.name }} | The best movies ever{% endblock %}
+{% block css %}
+<link rel="stylesheet" href="../../css/style.css">
+{% endblock %}
 
 {% block body %}
     <div class="container">
@@ -14,7 +17,44 @@
                         </h3>
                         <p class="mb-0 card-text">Réalisateur: {{ movie.director }}</p>
                         <p class="mb-0 card-text">Durée: {{ movie.duration }}</p>
-                        <div>Note: {{ movieAverageNotation }}/5</div>
+                        <div>
+                            <p>Note: 
+                            {% if movieAverageNotation >= 0 and movieAverageNotation <= 1 %}
+                                 Soyez le premier à noter ce film !
+                            {% elseif movieAverageNotation >= 1 and movieAverageNotation <= 1.5 %}
+                                <img src="{{ asset('../../img/icons/star-regular.svg') }}" width="16" height="16" class="avg-star" alt="note"/>
+                                <img src="{{ asset('../../img/icons/star-regular.svg') }}" width="16" height="16" class="avg-star" alt="note"/>
+                                <img src="{{ asset('../../img/icons/star-regular.svg') }}" width="16" height="16" class="avg-star" alt="note"/>
+                                <img src="{{ asset('../../img/icons/star-regular.svg') }}" width="16" height="16" class="avg-star" alt="note"/>
+                                <img src="{{ asset('../../img/icons/star-solid.svg') }}" width="16" height="16" class="avg-star" alt="note"/>
+                            {% elseif movieAverageNotation >= 1.5 and movieAverageNotation <= 2.5 %}
+                                <img src="{{ asset('../../img/icons/star-solid.svg') }}" width="16" height="16" class="avg-star" alt="note"/>
+                                <img src="{{ asset('../../img/icons/star-solid.svg') }}" width="16" height="16" class="avg-star" alt="note"/>
+                                <img src="{{ asset('../../img/icons/star-regular.svg') }}" width="16" height="16" class="avg-star" alt="note"/>
+                                <img src="{{ asset('../../img/icons/star-regular.svg') }}" width="16" height="16" class="avg-star" alt="note"/>
+                                <img src="{{ asset('../../img/icons/star-regular.svg') }}" width="16" height="16" class="avg-star" alt="note"/>
+                            {% elseif movieAverageNotation >= 2.5 and movieAverageNotation <= 3.5 %}
+                                <img src="{{ asset('../../img/icons/star-solid.svg') }}" width="16" height="16" class="avg-star" alt="note"/>
+                                <img src="{{ asset('../../img/icons/star-solid.svg') }}" width="16" height="16" class="avg-star" alt="note"/>
+                                <img src="{{ asset('../../img/icons/star-solid.svg') }}" width="16" height="16" class="avg-star" alt="note"/>
+                                <img src="{{ asset('../../img/icons/star-regular.svg') }}" width="16" height="16" class="avg-star" alt="note"/>
+                                <img src="{{ asset('../../img/icons/star-regular.svg') }}" width="16" height="16" class="avg-star" alt="note"/>
+                            {% elseif movieAverageNotation >= 3.5 and movieAverageNotation <= 4.5 %}
+                                <img src="{{ asset('../../img/icons/star-solid.svg') }}" width="16" height="16" class="avg-star" alt="note"/>
+                                <img src="{{ asset('../../img/icons/star-solid.svg') }}" width="16" height="16" class="avg-star" alt="note"/>
+                                <img src="{{ asset('../../img/icons/star-solid.svg') }}" width="16" height="16" class="avg-star" alt="note"/>
+                                <img src="{{ asset('../../img/icons/star-solid.svg') }}" width="16" height="16" class="avg-star" alt="note"/>
+                                <img src="{{ asset('../../img/icons/star-regular.svg') }}" width="16" height="16" class="avg-star" alt="note"/>
+                            {% elseif movieAverageNotation >= 4.5 %}
+                                <img src="{{ asset('../../img/icons/star-solid.svg') }}" width="16" height="16" class="avg-star" alt="note"/>
+                                <img src="{{ asset('../../img/icons/star-solid.svg') }}" width="16" height="16" class="avg-star" alt="note"/>
+                                <img src="{{ asset('../../img/icons/star-solid.svg') }}" width="16" height="16" class="avg-star" alt="note"/>
+                                <img src="{{ asset('../../img/icons/star-solid.svg') }}" width="16" height="16" class="avg-star" alt="note"/>
+                                <img src="{{ asset('../../img/icons/star-solid.svg') }}" width="16" height="16" class="avg-star" alt="note"/>
+                            {% endif %}
+                                {# {{ movieAverageNotation }}/5 #}
+                            </p>
+                        </div>
                         <div class="mt-5 mb-3 d-flex">
                             <div class="mr-3 fb-share-button" data-href="{{ app.request.uri }}" data-layout="button" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=" . urlencode({{ app.request.uri }})"F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Partager</a></div>
                             <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-show-count="false">Tweet</a>
