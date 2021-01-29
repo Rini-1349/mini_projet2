@@ -14,6 +14,8 @@
 
         <!-- Custom styles for this template -->
         <link href="album.css" rel="stylesheet">
+
+
     </head>
     <body>
         {# Ajoute des messages flash s'il y en a #}
@@ -36,7 +38,6 @@
             </div>
         </footer>
         <div id="fb-root"></div>
-        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v9.0" nonce="20Ey9kpW"></script>
-        <script type="text/javascript" async src="https://platform.twitter.com/widgets.js"></script>
+        {% block javascripts %}{% endblock %}
     </body>
 </html>
