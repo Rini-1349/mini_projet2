@@ -1,10 +1,35 @@
 @import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
-.avg-star {
-    filter: invert(92%) sepia(56%) saturate(1175%) hue-rotate(342deg) brightness(103%) contrast(92%);
+.user:before {
+    content: "\f007";
+    /* Star */
+    margin-right: 5px;
+    font-size: 20px;
+    font-family: FontAwesome;
+    display: inline-block;
+    color: #222222;
+}
+
+.form-group>div>label.required:after {
+    content: "*";
+    color: #f13737;
 }
 
 
 /* Remove radio buttons */
+
+.avg-star {
+    filter: invert(92%) sepia(56%) saturate(1175%) hue-rotate(342deg) brightness(103%) contrast(92%);
+}
+
+.starrating>div>label.required:after {
+    content: "*";
+    color: #f13737;
+}
+
+.starrating>div>label.required:after {
+    content: "*";
+    color: #f13737;
+}
 
 .starrating>div>div>input {
     display: none;
@@ -26,7 +51,7 @@
     font-size: 20px;
     font-family: FontAwesome;
     display: inline-block;
-    color: #222222;
+    color: #22222293;
 }
 
 .starrating>div>div>input:checked~label:before {

@@ -68,26 +68,30 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-10 col-12 m-auto">
-            {{ form_start(form) }}
-            <div class="starrating d-flex">
-                {{ form_row(form.notation) }}
-            </div>
-            <div class="form-group">
-                {{ form_row(form.author) }}
-            </div>
-            <div class="form-group">
-                {{ form_row(form.message) }}
-            </div>
-                {{ form_row(form.submit) }}
-            {{ form_end(form) }}
-        </div>
-        <div class="col-md-10 col-12 m-auto">
+        <div class="col-md-10 col-12 p-0 m-auto">
             {% for comment in movie.comments %}
-                <div>{{ comment.author }}</div>
-                <div>Le {{ comment.createdAt|date("d/m/Y à H:i", "Europe/Paris") }}</div>
+            <div class="bg-light p-3 border-bottom">
+                <p class="font-weight-bold user">{{ comment.author }}</p>
                 <div>{{ comment.message }}</div>
+                <small>Le {{ comment.createdAt|date("d/m/Y à H:i", "Europe/Paris") }}</small>
+            </div>
             {% endfor %}
+        
+            <div class="mt-4 py-3">
+                <h2 class="h4">Votre Avis</h2>
+                {{ form_start(form) }}
+                <div class="starrating d-flex">
+                    {{ form_row(form.notation) }}
+                </div>
+                <div class="form-group">
+                    {{ form_row(form.author) }}
+                </div>
+                <div class="form-group">
+                    {{ form_row(form.message) }}
+                </div>
+                    {{ form_row(form.submit) }}
+                {{ form_end(form) }}
+            </div>
         </div>
     </div>
 {% block javascripts %}
