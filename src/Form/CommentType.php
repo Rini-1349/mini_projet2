@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Comment;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -17,10 +18,23 @@ class CommentType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('notation', ChoiceType::class, [
+                'label' => 'Note',
+                'choices' => [
+                    '1' => '1',
+                    '2' => '2',
+                    '3' => '3',
+                    '4' => '4',
+                    '5' => '5'
+                ],
+                'expanded' => true,
+                'required' => true
+            ])
             ->add('author', TextType::class, [
                 'label' => 'Votre nom',
                 'attr' => [
-                    'placeholder' => 'Entrez votre nom'
+                    'placeholder' => 'Entrez votre nom',
+                    'autocomplete' => 'off'
                 ],
                 'constraints' => [
                     new NotBlank(),
@@ -34,6 +48,7 @@ class CommentType extends AbstractType
                 'label' => 'Votre commentaire',
                 'attr' => [
                     'placeholder' => 'Entrez votre commentaire',
+                    'autocomplete' => 'off',
                     'rows' => '5'
                 ],
                 'constraints' => [

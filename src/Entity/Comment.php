@@ -38,6 +38,11 @@ class Comment
      */
     private $movie;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $notation;
+
     public function __construct()
     {
         if (is_null($this->created_at)) {
@@ -94,6 +99,18 @@ class Comment
     public function setMovie(?Movie $movie): self
     {
         $this->movie = $movie;
+
+        return $this;
+    }
+
+    public function getNotation(): ?int
+    {
+        return $this->notation;
+    }
+
+    public function setNotation(int $notation): self
+    {
+        $this->notation = $notation;
 
         return $this;
     }

@@ -24,12 +24,14 @@ class MovieController extends AbstractController
      */
     public function index(Request $request, $id): Response
     {
+        // Get current movie
         $movie = $this->entityManager->getRepository(Movie::class)->findOneById($id);
 
         $comment = new Comment();
         $form = $this->createForm(CommentType::class, $comment);
         $form->handleRequest($request);
 
+        // Add a comment
         if ($form->isSubmitted() AND $form->isValid()){
             $comment = $form->getData();
             $comment->setMovie($movie);
@@ -40,10 +42,18 @@ class MovieController extends AbstractController
                 'success',
                 'Votre commentaire a été enregistré !'
             );
+            return $this->redirectToRoute('movie', ['id' => $id]);
         }
+
+        // Get movie average notation
+        $movieAverageNotation = $this->entityManager
+            ->getRepository(Comment::class)
+            ->getMovieAverageNotation($id);
+        $movieAverageNotation = round($movieAverageNotation[0]['movie_avg_notation'], 0);
 
         return $this->render('movie/index.html.twig', [
             'movie' => $movie,
+            'movieAverageNotation' => $movieAverageNotation,
             'form' => $form->createView()
         ]);
     }

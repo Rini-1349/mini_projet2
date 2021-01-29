@@ -19,6 +19,15 @@ class CommentRepository extends ServiceEntityRepository
         parent::__construct($registry, Comment::class);
     }
 
+    public function getMovieAverageNotation($movieId) {
+
+        return $this->createQueryBuilder('c')
+            ->select("avg(c.notation) as movie_avg_notation")
+            ->where('c.movie = :movieId')
+            ->setParameter('movieId', $movieId)
+            ->getQuery()
+            ->getResult();
+    }
     // /**
     //  * @return Comment[] Returns an array of Comment objects
     //  */
