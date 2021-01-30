@@ -49,7 +49,7 @@ class MovieController extends AbstractController
         $movieAverageNotation = $this->entityManager
             ->getRepository(Comment::class)
             ->getMovieAverageNotation($id);
-        $movieAverageNotation = round($movieAverageNotation[0]['movie_avg_notation'], 0);
+        $movieAverageNotation = round($movieAverageNotation[0]['movie_avg_notation'], 1);
 
         return $this->render('movie/index.html.twig', [
             'movie' => $movie,

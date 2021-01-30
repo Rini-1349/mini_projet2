@@ -9,6 +9,14 @@
     color: #222222;
 }
 
+.card {
+    border: none;
+}
+
+.card-img-right {
+    object-fit: contain;
+}
+
 .form-group>div>label.required:after {
     content: "*";
     color: #f13737;
@@ -18,7 +26,7 @@
 /* Remove radio buttons */
 
 .avg-star {
-    filter: invert(92%) sepia(56%) saturate(1175%) hue-rotate(342deg) brightness(103%) contrast(92%);
+    filter: invert(82%) sepia(55%) saturate(1462%) hue-rotate(349deg) brightness(100%) contrast(105%);
 }
 
 .starrating>div>label.required:after {

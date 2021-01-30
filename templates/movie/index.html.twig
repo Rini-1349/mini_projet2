@@ -19,27 +19,27 @@
                         <p class="mb-0 card-text">Durée: {{ movie.duration }}</p>
                         <div>
                             <p>Note: 
-                            {% if movieAverageNotation >= 0 and movieAverageNotation <= 1 %}
+                            {% if movieAverageNotation >= 0 and movieAverageNotation < 1 %}
                                  Soyez le premier à noter ce film !
                             {% elseif movieAverageNotation >= 1 and movieAverageNotation <= 1.5 %}
-                                <img src="{{ asset('../../img/icons/star-regular.svg') }}" width="16" height="16" class="avg-star" alt="note"/>
-                                <img src="{{ asset('../../img/icons/star-regular.svg') }}" width="16" height="16" class="avg-star" alt="note"/>
-                                <img src="{{ asset('../../img/icons/star-regular.svg') }}" width="16" height="16" class="avg-star" alt="note"/>
-                                <img src="{{ asset('../../img/icons/star-regular.svg') }}" width="16" height="16" class="avg-star" alt="note"/>
-                                <img src="{{ asset('../../img/icons/star-solid.svg') }}" width="16" height="16" class="avg-star" alt="note"/>
-                            {% elseif movieAverageNotation >= 1.5 and movieAverageNotation <= 2.5 %}
-                                <img src="{{ asset('../../img/icons/star-solid.svg') }}" width="16" height="16" class="avg-star" alt="note"/>
                                 <img src="{{ asset('../../img/icons/star-solid.svg') }}" width="16" height="16" class="avg-star" alt="note"/>
                                 <img src="{{ asset('../../img/icons/star-regular.svg') }}" width="16" height="16" class="avg-star" alt="note"/>
                                 <img src="{{ asset('../../img/icons/star-regular.svg') }}" width="16" height="16" class="avg-star" alt="note"/>
                                 <img src="{{ asset('../../img/icons/star-regular.svg') }}" width="16" height="16" class="avg-star" alt="note"/>
-                            {% elseif movieAverageNotation >= 2.5 and movieAverageNotation <= 3.5 %}
+                                <img src="{{ asset('../../img/icons/star-regular.svg') }}" width="16" height="16" class="avg-star" alt="note"/>
+                            {% elseif movieAverageNotation >= 1.5 and movieAverageNotation < 2.5 %}
+                                <img src="{{ asset('../../img/icons/star-solid.svg') }}" width="16" height="16" class="avg-star" alt="note"/>
+                                <img src="{{ asset('../../img/icons/star-solid.svg') }}" width="16" height="16" class="avg-star" alt="note"/>
+                                <img src="{{ asset('../../img/icons/star-regular.svg') }}" width="16" height="16" class="avg-star" alt="note"/>
+                                <img src="{{ asset('../../img/icons/star-regular.svg') }}" width="16" height="16" class="avg-star" alt="note"/>
+                                <img src="{{ asset('../../img/icons/star-regular.svg') }}" width="16" height="16" class="avg-star" alt="note"/>
+                            {% elseif movieAverageNotation >= 2.5 and movieAverageNotation < 3.5 %}
                                 <img src="{{ asset('../../img/icons/star-solid.svg') }}" width="16" height="16" class="avg-star" alt="note"/>
                                 <img src="{{ asset('../../img/icons/star-solid.svg') }}" width="16" height="16" class="avg-star" alt="note"/>
                                 <img src="{{ asset('../../img/icons/star-solid.svg') }}" width="16" height="16" class="avg-star" alt="note"/>
                                 <img src="{{ asset('../../img/icons/star-regular.svg') }}" width="16" height="16" class="avg-star" alt="note"/>
                                 <img src="{{ asset('../../img/icons/star-regular.svg') }}" width="16" height="16" class="avg-star" alt="note"/>
-                            {% elseif movieAverageNotation >= 3.5 and movieAverageNotation <= 4.5 %}
+                            {% elseif movieAverageNotation >= 3.5 and movieAverageNotation < 4.5 %}
                                 <img src="{{ asset('../../img/icons/star-solid.svg') }}" width="16" height="16" class="avg-star" alt="note"/>
                                 <img src="{{ asset('../../img/icons/star-solid.svg') }}" width="16" height="16" class="avg-star" alt="note"/>
                                 <img src="{{ asset('../../img/icons/star-solid.svg') }}" width="16" height="16" class="avg-star" alt="note"/>
@@ -52,7 +52,7 @@
                                 <img src="{{ asset('../../img/icons/star-solid.svg') }}" width="16" height="16" class="avg-star" alt="note"/>
                                 <img src="{{ asset('../../img/icons/star-solid.svg') }}" width="16" height="16" class="avg-star" alt="note"/>
                             {% endif %}
-                                {# {{ movieAverageNotation }}/5 #}
+                                
                             </p>
                         </div>
                         <div class="mt-5 mb-3 d-flex">
@@ -71,8 +71,43 @@
         <div class="col-md-10 col-12 p-0 m-auto">
             {% for comment in movie.comments %}
             <div class="bg-light p-3 border-bottom">
-                <p class="font-weight-bold user">{{ comment.author }}</p>
-                <div>{{ comment.message }}</div>
+                <div class="d-flex">
+                    <p class="font-weight-bold user pr-2">{{ comment.author }}</p>
+                    <div>
+                        {% if comment.notation == 1 %}
+                            <img src="{{ asset('../../img/icons/star-solid.svg') }}" width="16" height="16" class="avg-star" alt="note"/>
+                            <img src="{{ asset('../../img/icons/star-regular.svg') }}" width="16" height="16" class="avg-star" alt="note"/>
+                            <img src="{{ asset('../../img/icons/star-regular.svg') }}" width="16" height="16" class="avg-star" alt="note"/>
+                            <img src="{{ asset('../../img/icons/star-regular.svg') }}" width="16" height="16" class="avg-star" alt="note"/>
+                            <img src="{{ asset('../../img/icons/star-regular.svg') }}" width="16" height="16" class="avg-star" alt="note"/>
+                        {% elseif comment.notation >= 2 %}
+                            <img src="{{ asset('../../img/icons/star-solid.svg') }}" width="16" height="16" class="avg-star" alt="note"/>
+                            <img src="{{ asset('../../img/icons/star-solid.svg') }}" width="16" height="16" class="avg-star" alt="note"/>
+                            <img src="{{ asset('../../img/icons/star-regular.svg') }}" width="16" height="16" class="avg-star" alt="note"/>
+                            <img src="{{ asset('../../img/icons/star-regular.svg') }}" width="16" height="16" class="avg-star" alt="note"/>
+                            <img src="{{ asset('../../img/icons/star-regular.svg') }}" width="16" height="16" class="avg-star" alt="note"/>
+                        {% elseif comment.notation >= 3 %}
+                            <img src="{{ asset('../../img/icons/star-solid.svg') }}" width="16" height="16" class="avg-star" alt="note"/>
+                            <img src="{{ asset('../../img/icons/star-solid.svg') }}" width="16" height="16" class="avg-star" alt="note"/>
+                            <img src="{{ asset('../../img/icons/star-solid.svg') }}" width="16" height="16" class="avg-star" alt="note"/>
+                            <img src="{{ asset('../../img/icons/star-regular.svg') }}" width="16" height="16" class="avg-star" alt="note"/>
+                            <img src="{{ asset('../../img/icons/star-regular.svg') }}" width="16" height="16" class="avg-star" alt="note"/>
+                        {% elseif comment.notation >= 4 %}
+                            <img src="{{ asset('../../img/icons/star-solid.svg') }}" width="16" height="16" class="avg-star" alt="note"/>
+                            <img src="{{ asset('../../img/icons/star-solid.svg') }}" width="16" height="16" class="avg-star" alt="note"/>
+                            <img src="{{ asset('../../img/icons/star-solid.svg') }}" width="16" height="16" class="avg-star" alt="note"/>
+                            <img src="{{ asset('../../img/icons/star-solid.svg') }}" width="16" height="16" class="avg-star" alt="note"/>
+                            <img src="{{ asset('../../img/icons/star-regular.svg') }}" width="16" height="16" class="avg-star" alt="note"/>
+                        {% elseif comment.notation >= 5 %}
+                            <img src="{{ asset('../../img/icons/star-solid.svg') }}" width="16" height="16" class="avg-star" alt="note"/>
+                            <img src="{{ asset('../../img/icons/star-solid.svg') }}" width="16" height="16" class="avg-star" alt="note"/>
+                            <img src="{{ asset('../../img/icons/star-solid.svg') }}" width="16" height="16" class="avg-star" alt="note"/>
+                            <img src="{{ asset('../../img/icons/star-solid.svg') }}" width="16" height="16" class="avg-star" alt="note"/>
+                            <img src="{{ asset('../../img/icons/star-solid.svg') }}" width="16" height="16" class="avg-star" alt="note"/>
+                        {% endif %}
+                    </div>
+                </div>
+                <p>{{ comment.message }}</p>
                 <small>Le {{ comment.createdAt|date("d/m/Y à H:i", "Europe/Paris") }}</small>
             </div>
             {% endfor %}
